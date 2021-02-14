@@ -1,0 +1,61 @@
+@charset "ISO-8859-1";
+
+h1{
+	font-family: "Roboto", sans-serif;
+	position: absolute;
+	margin: 20px 44% 0px;
+}
+
+div{
+    width: 600px;
+    height: 500px;
+    margin: auto;
+    background-color:#FFFFFF ;
+    border: solid black 10px;
+}
+input:invalid {
+  border: 2px solid red;
+}
+
+input:valid {
+  border: 2px solid black;
+}
+input{
+	font-family: "Roboto", sans-serif;
+  	outline: 0;
+  	background: #f2f2f2;
+ 	width: 75%;
+  	border: 0;
+  	margin: 60px 68px -90px;
+  	padding: 13px;
+  	box-sizing: border-box;
+  	font-size: 14px;
+}
+
+#boton{
+	font-family: "Roboto", sans-serif;
+	position: absolute;
+	margin: 40px 12% 0px;
+	width: 20%;
+	height: 6%;
+}
+
+#nacimiento{
+	width: 16%;
+	position: absolute;
+	margin: 30px 68px 0;
+}
+
+#EDAD{
+	width: 15%;
+	position: absolute;
+	margin: 15px 23% 0;
+}
+
+body {
+  background: #76b852; 
+  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+  background: -moz-linear-gradient(right, #76b852, #8DC26F);
+  background: -o-linear-gradient(right, #76b852, #8DC26F);
+  background: linear-gradient(to left, #76b852, #8DC26F);      
+}
