@@ -31,6 +31,13 @@ public class Registro extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.setContentType("application/json");
+		System.out.println(request.getParameter("pass")+ " funciono en el servlet");
+		PrintWriter out=response.getWriter();
+		
+		out.println(Controlador.registro(request.getParameter("nombre"),
+				request.getParameter("correo") , request.getParameter("nacimiento"),
+				request.getParameter("EDAD"),request.getParameter("Ubicacion"),request.getParameter("pass")));
 		
 	}
 

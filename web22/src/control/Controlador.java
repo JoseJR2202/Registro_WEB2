@@ -13,7 +13,7 @@ public class Controlador {
 	static public String registro(String nombre, String correo,String nacimiento, String EDAD, String ubicacion, String pass) {
 		Object[] obj= {correo,nombre,nacimiento,EDAD,ubicacion, Hashing.encriptar(pass)};
 		System.out.println(pass+" funciono en el servlet");
-
+		
 		try {
 			conectar.dbPrepareStatement("insert into registro (correo, nombre, nacimiento,"
 					+ "EDAD, Ubicacion, pass) values( ?, ?, ?, ?, ?, ? )", obj);

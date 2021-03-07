@@ -9,10 +9,10 @@ public class Conexion {
 	private static Conexion DB = new Conexion();
 	private Connection conn;
 	private PreparedStatement pstmt;
-	private String urlDB = "jdbc:postgresql://ec2-52-50-171-4.eu-west-1.compute.amazonaws.com:5432/dathvivntlm28p";
+	private String urlDB = "jdbc:postgresql://ec2-52-50-171-4.eu-west-1.compute.amazonaws.com:5432"
+							+"/dathvivntlm28p";
 	private String userDB = "ussgyalqqoythj";
 	private String passDB = "7b331340eef44da201988ff922ce0c985f79d8b14653b75cdff00a10aa00cdf6"; 
-	
 	public Conexion() {
 		// TODO Auto-generated constructor stub
 		 try{
