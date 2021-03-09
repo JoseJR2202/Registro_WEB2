@@ -1,6 +1,9 @@
 /**
  * 
  */
+/**
+ * 
+ */
  const email = document.getElementById("correo");
 
 email.addEventListener("input", function (event) {
@@ -14,23 +17,25 @@ email.addEventListener("input", function (event) {
 var registerForm=document.getElementById("registro")
 var boton=document.getElementById("boton")
 
-const enviar=()=>{
+const enviar=(e)=>{
+	e.preventDefault();
 	if(registerForm.checkValidity()){
 		var form=new FormData(registerForm);
-	
-		fetch("http://localhost:8080/web22/Registro",{
+		var datos={
 			method:"POST",
-			body:form,
-			mode:"no-cors",
-			headers:{
-				'Accept': 'application/json',
-    			'Content-Type': 'application/json'
-			}
-		}).then(response =>{
-			console.log(response.json())
-		}).catch(err=>console.log(err))
+			body:form
+		}
+		fetch("https://registroweb2.herokuapp.com/Registro",datos)
+		.then(response =>response.json())
+		.then(data=>{
+			if(data.status==200)
+				alert("funciono")
+			else
+				alert("no funciono")
+		})
+		.catch(err=>console.log('Error:',err));
 	}else 
 		alert("ocurrio un problema");
 }
 
-boton.addEventListener("click", enviar);
+registerForm.addEventListener("submit", enviar);
