@@ -25,11 +25,13 @@ const enviar=(e)=>{
 			method:"POST",
 			body:form
 		}
-		fetch("https://registroweb2.herokuapp.com/Registro",datos)
+		fetch("https://registroweb2.herokuapp.com/Login",datos)
 		.then(response =>response.json())
 		.then(data=>{
-			if(data.status==200)
-				alert("funciono")
+			if(data.status==200){
+				alert(data.mensaje)
+				//window.open("https://registroweb2.herokuapp.com/public/views/Daschboard.html","_self");
+			}
 			else
 				alert("no funciono")
 		})
