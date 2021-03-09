@@ -4,23 +4,25 @@
   <artifactId>web22</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>web22</name>
-  <url>http://maven.apache.org</url>
+ 
 	<dependencies>
+	
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-web-api</artifactId>
 			<version>6.0</version>
 			<scope>provided</scope>
 		</dependency>
+	
 	  	<dependency>
 	  		<groupId>org.postgresql</groupId>
 	  		<artifactId>postgresql</artifactId>
 	  		<version>9.4.1208</version>
 	  	</dependency>
+	
 	  </dependencies>
+  
   <build>
-    <finalName>web22</finalName>
     <sourceDirectory>src</sourceDirectory>
 	    <resources>
 	      <resource>
@@ -46,29 +48,29 @@
         	  <warSourceDirectory>WebContent</warSourceDirectory>
         	</configuration>
       	</plugin>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-dependency-plugin</artifactId>
-			<version>2.3</version>
-			<executions>
-				<execution>
-					<phase>package</phase>
-					<goals>
-						<goal>copy</goal>
-					</goals>
-					<configuration>
-						<artifactItems>
-							<artifactItem>
-								<groupId>com.github.jsimone</groupId>
-								<artifactId>webapp-runner</artifactId>
-								<version>8.0.30.2</version>
-								<destFileName>web22.jar</destFileName>
-							</artifactItem>
-						</artifactItems>
-					</configuration>
-				</execution>
-			</executions>
-		</plugin>
+		    <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.3</version><!--$NO-MVN-MAN-VER$-->
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.github.jsimone</groupId>
+									<artifactId>webapp-runner</artifactId>
+									<version>8.0.30.2</version>
+									<destFileName>webapp-runner.jar</destFileName>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+	   </plugin>
 	</plugins>
   </build>
 </project>

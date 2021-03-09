@@ -3,22 +3,27 @@ package helpers;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Properties;
 
 public class Conexion {
 	private static Conexion DB = new Conexion();
 	private Connection conn;
 	private PreparedStatement pstmt;
-	private String urlDB = "jdbc:postgresql://ec2-52-50-171-4.eu-west-1.compute.amazonaws.com:5432/dathvivntlm28p";
-	private String userDB = "ussgyalqqoythj";
-	private String passDB = "7b331340eef44da201988ff922ce0c985f79d8b14653b75cdff00a10aa00cdf6"; 
-	
+	private Properties propiedades = new Properties();
+	private Statement stmt;
+	private ResultSet rs;
 	public Conexion() {
 		// TODO Auto-generated constructor stub
 		 try{
-
+			   propiedades.load(this.getClass().
+			    getResourceAsStream("/propiedades/propiedades.properties"));
 	           Class.forName("org.postgresql.Driver");
-	           conn = DriverManager.getConnection(this.urlDB, this.userDB, this.passDB);
+	           conn = DriverManager.getConnection(propiedades.getProperty("host")+"/"
+	        		   		+propiedades.getProperty("nameBD"), propiedades.getProperty("Usuario"),propiedades.getProperty("pass"));
 	      
 		 }catch(Exception ex){
 	    	   System.out.println(ex);
@@ -29,15 +34,16 @@ public class Conexion {
 		return DB;
 	}
 	
-	public void dbPrepareStatement(String query, Object[] obj) {
+	public void dbPrepareStatement(String query, Object... obj) {
 		try {
 			this.pstmt = this.conn.prepareStatement(query);
-			this.pstmt.setString(1, (String) obj[0]);
-			this.pstmt.setString(2, (String) obj[1]);
-			this.pstmt.setString(3, (String) obj[2]);
-			this.pstmt.setInt(4, (Integer.parseInt((String) obj[3])));
-			this.pstmt.setString(5, (String) obj[4]);
-			this.pstmt.setString(6, (String) obj[5]);
+			int i=0;
+			for(Object algo:obj) {
+				if(algo instanceof java.lang.String)
+					this.pstmt.setString(++i, (String) algo);
+				else
+					this.pstmt.setInt(++i, (int) algo);
+			}
 			this.pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -48,5 +54,31 @@ public class Conexion {
 				e.printStackTrace();
 			}
 		}
-	} 
+	}
+	
+	public ArrayList<String> dbStatement(String query ) { 
+		try {  
+			this.stmt = this.conn.createStatement(); 
+			this.rs = this.stmt.executeQuery(query);
+			ArrayList<String> datos_usuario=new ArrayList<String>();
+			while(rs.next()) {
+			for(int i=0;i<rs.getMetaData().getColumnCount();i++)
+				datos_usuario.add(rs.getString(++i));
+			}
+			if(datos_usuario.get(0)!=null)
+				return datos_usuario;
+			else
+				return null;
+		} catch (SQLException e) { 
+			e.printStackTrace(); 
+		}finally { 
+			try { 
+				this.stmt.close(); 
+				this.rs.close(); 
+			} catch (SQLException e) { 
+				e.printStackTrace(); 
+			} 
+		} 
+		return null; 
+	}
 }
