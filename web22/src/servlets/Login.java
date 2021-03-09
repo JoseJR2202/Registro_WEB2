@@ -44,9 +44,9 @@ public class Login extends HttpServlet {
 		response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         if(Controlador_Login.login(request)) 
-        	out.println("{\"status\":\"200\",\"mensaje\":\"usuario valido\"}");
+        	out.println("{\"status\":\"200\"}");
         else
-        	out.println("{\"status\":\"500\",\"mensaje\":\"usuario no existente\"}");
+        	out.println("{\"status\":\"500\"}");
         out.close();
 	}
 

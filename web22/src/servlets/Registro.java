@@ -55,9 +55,9 @@ public class Registro extends HttpServlet {
 		if(Controlador.registro(request.getParameter("nombre"),
 				request.getParameter("correo") , request.getParameter("nacimiento"),
 				request.getParameter("EDAD"),request.getParameter("Ubicacion"),request.getParameter("pass")))
-			out.println("{\"status\":\"200\",\"mensaje\":\"usuario creado\"}");
+			out.println("{\"status\":\"200\"}");
 		else
-			out.println("{\"status\":\"500\",\"mensaje\":\"usuario no creado\"}");
+			out.println("{\"status\":\"500\"}");
 		out.close();	
 	}
 

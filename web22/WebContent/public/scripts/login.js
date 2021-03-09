@@ -1,27 +1,37 @@
-/**
- * 
- */
-var registerForm=document.getElementById("Login")
+const email = document.getElementById("correo");
+
+email.addEventListener("input", function (event) {
+  if (email.validity.typeMismatch) {
+    email.setCustomValidity("ingresa una dirección de correo electrónico");
+  } else {
+    email.setCustomValidity("");
+  }
+});
+
+var registerForm=document.getElementById("registro")
 var boton=document.getElementById("boton")
 
 const enviar=(e)=>{
 	e.preventDefault();
 	if(registerForm.checkValidity()){
 		var form=new FormData(registerForm);
-	
-		fetch("http://localhost:8080/web22/Login",{
+		var datos={
 			method:"POST",
-			body:form,
-			mode:"no-cors",
-			headers:{
-				'Accept': 'application/json',
-    			'Content-Type': 'application/json'
+			body:form
+		}
+		fetch("https://registroweb2.herokuapp.com/Login",datos)
+		.then(response =>response.json())
+		.then(data=>{
+			if(data.status==200){
+				alert("funciono")
+				//window.open("https://registroweb2.herokuapp.com/public/views/Dashboard.html","_self");
 			}
-		}).then(response =>{
-			console.log(response.json())
-		}).catch(err=>console.log(err))
+			else
+				alert("no funciono")
+		})
+		.catch(err=>console.log('Error:',err));
 	}else 
 		alert("ocurrio un problema");
 }
 
-boton.addEventListener("click", enviar);
+registerForm.addEventListener("submit", enviar);
