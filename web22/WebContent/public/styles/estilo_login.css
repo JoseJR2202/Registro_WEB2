@@ -51,7 +51,12 @@ input{
 	position: absolute;
 	margin: 15px 23% 0;
 }
-
+p{
+	font-family: "Roboto", sans-serif;
+	position: absolute;
+	margin: 10px 600px 0px;
+	color: #ffffff;
+}
 body {
   background: #76b852; 
   background: -webkit-linear-gradient(right, #76b852, #8DC26F);
