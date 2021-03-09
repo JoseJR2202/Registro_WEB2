@@ -41,7 +41,7 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.setContentType("text/html");
+		response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         if(Controlador_Login.login(request)) 
         	out.println("{\"status\":\"200\"}");
