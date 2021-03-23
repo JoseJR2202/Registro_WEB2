@@ -24,7 +24,7 @@ const enviar=(e)=>{
 		.then(data=>{
 			if(data.status==200){
 				alert("funciono")
-				//window.open("https://registroweb2.herokuapp.com/public/views/Dashboard.html","_self");
+				window.open("https://registroweb2.herokuapp.com/public/views/Dashboard.html","_self");
 			}
 			else
 				alert("no funciono")
