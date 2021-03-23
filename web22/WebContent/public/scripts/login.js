@@ -8,7 +8,7 @@ email.addEventListener("input", function (event) {
   }
 });
 
-var registerForm=document.getElementById("registro")
+var registerForm=document.getElementById("Login")
 var boton=document.getElementById("boton")
 
 const enviar=(e)=>{
