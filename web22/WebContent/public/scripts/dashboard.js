@@ -34,7 +34,7 @@ window.onload=()=>{
 					let part =document.createElement("input");
 					part.id=name;
 					part.type="text";
-					part.value=data.name;
+					part.value=data.valor;
 					let label=document.createElement("label");
 					label.innerText=name + ": ";
 					form.appendChild(label);

@@ -35,7 +35,7 @@ public class Dashboard extends HttpServlet {
         HttpSession session = request.getSession();
         System.out.print("la sesion actual es:" +session.getAttribute("usuario"));
         if(session.getAttribute("usuario")!=null) 
-        	out.println("{\"status\":\"200\"}");
+        	out.println("{\"status\":\"200\",\"valor\":\"200\"}");
         else
         	out.println("{\"status\":\"500\"}");
         out.close();	
