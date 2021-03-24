@@ -63,6 +63,7 @@ public class Dashboard extends HttpServlet {
 				request.getParameter("EDAD"),request.getParameter("Ubicacion"),request.getParameter("pass")))
 		{
 			session.setAttribute("pass",request.getParameter("pass") );
+			session.setAttribute("usuario",request.getParameter("correo"));
 			out.println("{\"status\":\"200\"}");
 		}else
 			out.println("{\"status\":\"500\"}");
