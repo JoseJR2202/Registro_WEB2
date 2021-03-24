@@ -34,7 +34,7 @@ public class Conexion {
 		return DB;
 	}
 	
-	public void dbPrepareStatement(String query, Object... obj) {
+	public boolean dbPrepareStatement(String query, Object... obj) {
 		try {
 			this.pstmt = this.conn.prepareStatement(query);
 			int i=0;
@@ -47,6 +47,7 @@ public class Conexion {
 			this.pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		} finally {
 			try {
 				this.pstmt.close();
@@ -54,6 +55,7 @@ public class Conexion {
 				e.printStackTrace();
 			}
 		}
+		return true;
 	}
 	
 	public ArrayList<String> dbStatement(String query ) { 
@@ -62,8 +64,8 @@ public class Conexion {
 			this.rs = this.stmt.executeQuery(query);
 			ArrayList<String> datos_usuario=new ArrayList<String>();
 			while(rs.next()) {
-			for(int i=0;i<rs.getMetaData().getColumnCount();i++)
-				datos_usuario.add(rs.getString(++i));
+			for(int i=1;i<rs.getMetaData().getColumnCount()+1;i++)
+				datos_usuario.add(rs.getString(i));
 			}
 			if(datos_usuario.get(0)!=null)
 				return datos_usuario;
@@ -71,6 +73,7 @@ public class Conexion {
 				return null;
 		} catch (SQLException e) { 
 			e.printStackTrace(); 
+			System.out.print("aqui");
 		}finally { 
 			try { 
 				this.stmt.close(); 

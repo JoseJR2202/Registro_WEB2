@@ -1,21 +1,33 @@
 /**
  * 
  */
-const escribir=()=>{
-	let form = document.getElementById("Dashboard");
-	const arr=["correo","nombre","nacimiento","EDAD","Ubicacion","pass"];
-	for (const name of arr) {
-		let part =document.createElement("input");
-		part.id=name;
-		part.type="text";
-		part.value=name;
-		let label=document.createElement("label");
-		label.innerText=name + ": ";
-		form.appendChild(label);
-		form.appendChild(part);
-		form.appendChild(document.createElement("br"));
-	}
-}
+//boton para enviar cambio al servidor
+var registerForm=document.getElementById("Dashboard");
+var boton=document.getElementById("boton");
+
+
+const envio=(e)=>{
+	e.preventDefault();
+	if(registerForm.checkValidity()){
+		var form=new FormData(registerForm);
+		var datos={
+			method:"POST",
+			body:form
+		}
+		fetch("http://localhost:8080/web22/Dashboard",datos)
+		.then(response =>response.json())
+		.then(data=>{
+			if(data.status==200){
+				alert("funciono el boton")
+			}
+			else
+				alert("no funciono")
+				//agregar un mensaje en el json a recibir
+		})
+		.catch(err=>console.log('Error:',err));
+	}else 
+		alert("ocurrio un problema");
+};
 
 //Cuando cargue la pagina
 window.onload=()=>{
@@ -23,29 +35,24 @@ window.onload=()=>{
 	datos={
 		method:'GET'
 	}
-	fetch("https://registroweb2.herokuapp.com/Dashboard",datos)
+	fetch("http://localhost:8080/web22/Dashboard",datos)
 		.then(response =>response.json())
 		.then(data=>{
 			if(data.status==200){
-				alert("funciono")
-				let form = document.getElementById("Dashboard");
+				alert("funciono");
 				const arr=["correo","nombre","nacimiento","EDAD","Ubicacion","pass"];
 				const arr2=[data.correo,data.nombre,data.nacimiento,data.edad,data.ubicacion,data.pass];
 				let i=0;
 				for (const name of arr) {
-					let part =document.createElement("input");
-					part.id=name;
-					part.type="text";
+					let part =document.getElementById(name);
 					part.value=arr2[i++];
-					let label=document.createElement("label");
-					label.innerText=name + ": ";
-					form.appendChild(label);
-					form.appendChild(part);
-					form.appendChild(document.createElement("br"));
 				}
+				registerForm.addEventListener("submit", envio);
 			}
-			else
-				alert("no funciono")
+			else{
+				alert("ingrese sesion por favor");
+				window.open("http://localhost:8080/web22/public/views/Login.html","_self");
+			}
 		})
 		.catch(err=>console.log('Error:',err));
 }

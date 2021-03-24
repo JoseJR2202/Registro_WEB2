@@ -18,16 +18,19 @@ public class Controlador_dashboard {
         try {
         	String nueva_clave=Hashing.encriptar(session.getAttribute("pass").toString());
         	ArrayList<String> datos=conectar.dbStatement("Select * from registro where correo like '"+session.getAttribute("usuario").toString()+"' and pass like  '"+nueva_clave+"' ");
-            if(datos.get(0).equals(session.getAttribute("usuario")))
+        	if(datos.get(0).equals(session.getAttribute("usuario").toString())==true)
             	return "{\"status\":\"200\",\"correo\":\""+datos.get(0)+"\","
             		+ "\"nombre\":\""+datos.get(1)+"\",\"nacimiento\":\""+datos.get(2)+"\","
             		+  "\"edad\":\""+datos.get(3)+"\",\"ubicacion\":\""+datos.get(4)+"\","+
-            		"\"pass\":\""+datos.get(5)+"\"}";
+            		"\"pass\":\""+session.getAttribute("pass")+"\"}";
             else
             	return "{\"status\":\"500\"}";
         } catch (Exception e) {
             // TODO Auto-generated catch block
+        	System.out.print("no funciona");
             return "{\"status\":\"500\"}";
         }
     }
+	
+	
 }

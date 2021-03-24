@@ -49,6 +49,7 @@ public class Registro extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stubs
+		response.addHeader("Access-Control-Allow-Origin","*");
 		response.setContentType("application/json");
 		System.out.println(request.getParameter("pass")+ " funciono en el servlet");
 		PrintWriter out=response.getWriter();

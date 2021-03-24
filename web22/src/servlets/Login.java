@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import control.Controlador_Login;
 
@@ -41,10 +42,18 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.addHeader("Access-Control-Allow-Origin","*");
 		response.setContentType("application/json");
         PrintWriter out = response.getWriter();
-        if(Controlador_Login.login(request)) 
+        if(Controlador_Login.login(request)) {
+        	HttpSession session = request.getSession();
+            String usuario=request.getParameter("correo");
+            String pass=request.getParameter("pass");
+            session.setAttribute("usuario", usuario);
+            session.setAttribute("pass", pass);
         	out.println("{\"status\":\"200\"}");
+        	 
+        }
         else
         	out.println("{\"status\":\"500\"}");
         out.close();

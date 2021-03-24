@@ -15,9 +15,8 @@ public class Controlador {
 		System.out.println(pass+" funciono en el servlet");
 		
 		try {
-			conectar.dbPrepareStatement("insert into registro (correo, nombre, nacimiento,"
-					+ "EDAD, Ubicacion, pass) values( ?, ?, ?, ?, ?, ? )", obj);
-			return true;
+			return conectar.dbPrepareStatement("update registro set correo= ?, nombre=?, nacimiento=?,"
+					+ "EDAD=?, Ubicacion=?, pass=? where correo like '"+correo+"'", obj);
 		}catch (Exception e) {
 			return false;
 		}
