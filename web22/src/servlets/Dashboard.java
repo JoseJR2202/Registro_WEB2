@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import control.Controlador_dashboard;
+
 /**
  * Servlet implementation class Dashboard
  */
@@ -35,7 +37,7 @@ public class Dashboard extends HttpServlet {
         HttpSession session = request.getSession();
         System.out.print("la sesion actual es:" +session.getAttribute("usuario"));
         if(session.getAttribute("usuario")!=null) 
-        	out.println("{\"status\":\"200\",\"valor\":\"200\"}");
+        	out.println(Controlador_dashboard.dash(session));
         else
         	out.println("{\"status\":\"500\"}");
         out.close();	

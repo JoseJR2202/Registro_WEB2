@@ -21,6 +21,7 @@ public class Controlador_Login {
 	            if( datos.get(0).equals(request.getParameter("correo"))) {
 	                HttpSession session = request.getSession();
 	                session.setAttribute("usuario", request.getParameter("correo"));
+	                session.setAttribute("pass", request.getParameter("pass"));
 	                return true;
 	            } else {
 	                return false;
