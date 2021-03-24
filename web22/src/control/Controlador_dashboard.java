@@ -27,7 +27,7 @@ public class Controlador_dashboard {
             	return "{\"status\":\"500\"}";
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            return null;
+            return "{\"status\":\"500\"}";
         }
     }
 }
