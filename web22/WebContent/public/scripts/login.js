@@ -19,12 +19,12 @@ const enviar=(e)=>{
 			method:"POST",
 			body:form
 		}
-		fetch("http://localhost:8080/web22/Login",datos)
+		fetch("https://registroweb2.herokuapp.com/Login",datos)
 		.then(response =>response.json())
 		.then(data=>{
 			if(data.status==200){
 				alert("funciono")
-				window.open("http://localhost:8080/web22/public/views/Dashboard.html","_self");
+				window.open("https://registroweb2.herokuapp.com/public/views/Dashboard.html","_self");
 			}
 			else
 				alert("no funciono")

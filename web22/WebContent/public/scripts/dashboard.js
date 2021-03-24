@@ -35,7 +35,7 @@ window.onload=()=>{
 	datos={
 		method:'GET'
 	}
-	fetch("http://localhost:8080/web22/Dashboard",datos)
+	fetch("https://registroweb2.herokuapp.com/Dashboard",datos)
 		.then(response =>response.json())
 		.then(data=>{
 			if(data.status==200){
@@ -51,7 +51,7 @@ window.onload=()=>{
 			}
 			else{
 				alert("ingrese sesion por favor");
-				window.open("http://localhost:8080/web22/public/views/Login.html","_self");
+				window.open("https://registroweb2.herokuapp.com/web22/public/views/Login.html","_self");
 			}
 		})
 		.catch(err=>console.log('Error:',err));

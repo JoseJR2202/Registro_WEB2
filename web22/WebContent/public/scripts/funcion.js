@@ -25,12 +25,12 @@ const enviar=(e)=>{
 			method:"POST",
 			body:form
 		}
-		fetch("http://localhost:8080/web22/Registro",datos)
+		fetch("https://registroweb2.herokuapp.com/Registro",datos)
 		.then(response =>response.json())
 		.then(data=>{
 			if(data.status==200){
 				alert("funciono")
-				window.open("http://localhost:8080/web22/public/views/Login.html","_self");
+				window.open("https://registroweb2.herokuapp.com/web22/public/views/Login.html","_self");
 			}
 			else
 				alert("El correo que ha ingreado ya esta vinculado, por favor use otro");
