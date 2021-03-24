@@ -30,7 +30,7 @@ const enviar=(e)=>{
 		.then(data=>{
 			if(data.status==200){
 				alert("funciono")
-				window.open("https://registroweb2.herokuapp.com/web22/public/views/Login.html","_self");
+				window.open("https://registroweb2.herokuapp.com/public/views/Login.html","_self");
 			}
 			else
 				alert("El correo que ha ingreado ya esta vinculado, por favor use otro");

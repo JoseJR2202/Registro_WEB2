@@ -14,7 +14,7 @@ const envio=(e)=>{
 			method:"POST",
 			body:form
 		}
-		fetch("http://localhost:8080/web22/Dashboard",datos)
+		fetch("https://registroweb2.herokuapp.com/Dashboard",datos)
 		.then(response =>response.json())
 		.then(data=>{
 			if(data.status==200){
