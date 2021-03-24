@@ -3,6 +3,7 @@
  */
 //boton para enviar cambio al servidor
 var registerForm=document.getElementById("Dashboard");
+var cerrarForm=document.getElementById("cerrar");
 var boton=document.getElementById("boton");
 
 
@@ -22,7 +23,31 @@ const envio=(e)=>{
 			}
 			else
 				alert("no funciono")
-				//agregar un mensaje en el json a recibir
+				
+		})
+		.catch(err=>console.log('Error:',err));
+	}else 
+		alert("ocurrio un problema");
+};
+
+const envio2=(e)=>{
+	e.preventDefault();
+	if(registerForm.checkValidity()){
+		var form=new FormData(registerForm);
+		var datos={
+			method:"POST",
+			body:form
+		}
+		fetch("https://registroweb2.herokuapp.com/Dashboard",datos)
+		.then(response =>response.json())
+		.then(data=>{
+			if(data.status==200){
+				alert("cerrarndo sesion...");
+				window.open("https://registroweb2.herokuapp.com/public/views/Login.html","_self");
+			}
+			else
+				alert("no funciono")
+				
 		})
 		.catch(err=>console.log('Error:',err));
 	}else 
@@ -48,10 +73,11 @@ window.onload=()=>{
 					part.value=arr2[i++];
 				}
 				registerForm.addEventListener("submit", envio);
+				cerrarForm.addEventListener("submit", envio2);
 			}
 			else{
 				alert("ingrese sesion por favor");
-				window.open("https://registroweb2.herokuapp.com/web22/public/views/Login.html","_self");
+				window.open("https://registroweb2.herokuapp.com/public/views/Login.html","_self");
 			}
 		})
 		.catch(err=>console.log('Error:',err));

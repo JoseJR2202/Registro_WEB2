@@ -19,7 +19,12 @@
 			<br>
 			<input type="password" id="pass"  name="pass" placeholder="contraseña" minlength="8" maxlength="16" required>
 			<br>
+			<input id="accion" name="accion" type="hidden" value="envio"> 
 			<button id="boton" name="boton" type="submit">enviar</button>
+		</form>
+		<form id="cerrar">
+			<input id="accion" name="accion" type="hidden" value="invalidar"> 
+			<button id="boton" name="boton" type="submit">cerrar</button>
 		</form>
 	</div>
 	<script src="../scripts/dashboard.js" type="text/javascript"></script>

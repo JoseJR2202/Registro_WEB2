@@ -58,15 +58,20 @@ public class Dashboard extends HttpServlet {
 		System.out.println(request.getParameter("correo")+ " funciono en el servlet");
 		PrintWriter out=response.getWriter();
 		
-		if(session.getAttribute("usuario")!=null&&Controlador.registro(request.getParameter("nombre"),
-				request.getParameter("correo") , request.getParameter("nacimiento"),
-				request.getParameter("EDAD"),request.getParameter("Ubicacion"),request.getParameter("pass")))
-		{
-			session.setAttribute("pass",request.getParameter("pass") );
-			session.setAttribute("usuario",request.getParameter("correo"));
+		//verificando cual boton lo trajo hacia aqui
+		if(request.getParameter("accion").equals("envio")) {
+			if(session.getAttribute("usuario")!=null&&Controlador.registro(request.getParameter("nombre"),
+					request.getParameter("correo") , request.getParameter("nacimiento"),
+					request.getParameter("EDAD"),request.getParameter("Ubicacion"),request.getParameter("pass")))
+			{
+				session.setAttribute("pass",request.getParameter("pass") );
+				out.println("{\"status\":\"200\"}");
+			}else
+				out.println("{\"status\":\"500\"}");
+		}else {
+			session.invalidate();
 			out.println("{\"status\":\"200\"}");
-		}else
-			out.println("{\"status\":\"500\"}");
+		}
 		out.close();	
 	}
 
