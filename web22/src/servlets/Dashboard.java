@@ -72,7 +72,6 @@ public class Dashboard extends HttpServlet {
 		}else {
 			session.invalidate();
 			out.println("{\"status\":\"200\"}");
-			return;
 		}
 		out.close();	
 	}
