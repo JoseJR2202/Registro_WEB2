@@ -69,9 +69,9 @@ public class Dashboard extends HttpServlet {
 			}else
 				out.println("{\"status\":\"500\"}");
 		}else {
-			session.removeAttribute("correo");
-			session.removeAttribute("pass");
-			session.invalidate();
+			request.getSession().removeAttribute("correo");
+			request.getSession().removeAttribute("pass");
+			request.getSession().invalidate();
 			out.println("{\"status\":\"200\"}");
 		}
 		out.close();	
