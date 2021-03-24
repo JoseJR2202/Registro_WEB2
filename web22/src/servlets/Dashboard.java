@@ -60,6 +60,7 @@ public class Dashboard extends HttpServlet {
 		
 		//verificando cual boton lo trajo hacia aqui
 		if(request.getParameter("accion").equals("envio")) {
+			
 			if(session.getAttribute("usuario")!=null&&Controlador.registro(request.getParameter("nombre"),
 					request.getParameter("correo") , request.getParameter("nacimiento"),
 					request.getParameter("EDAD"),request.getParameter("Ubicacion"),request.getParameter("pass")))
@@ -69,10 +70,9 @@ public class Dashboard extends HttpServlet {
 			}else
 				out.println("{\"status\":\"500\"}");
 		}else {
-			request.getSession().removeAttribute("correo");
-			request.getSession().removeAttribute("pass");
-			request.getSession().invalidate();
+			session.invalidate();
 			out.println("{\"status\":\"200\"}");
+			return;
 		}
 		out.close();	
 	}
