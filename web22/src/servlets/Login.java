@@ -51,7 +51,7 @@ public class Login extends HttpServlet {
             String pass=request.getParameter("pass");
             session.setAttribute("usuario", usuario);
             session.setAttribute("pass", pass);
-            session.setMaxInactiveInterval(2);
+            session.setMaxInactiveInterval(1800);
         	out.println("{\"status\":\"200\"}");
         	 
         }
