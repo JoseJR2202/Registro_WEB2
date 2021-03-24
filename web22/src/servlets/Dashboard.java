@@ -35,7 +35,6 @@ public class Dashboard extends HttpServlet {
 		response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
-        System.out.print("la sesion actual es:" +session.getAttribute("usuario"));
         if(session.getAttribute("usuario")!=null) 
         	out.println(Controlador_dashboard.dash(session));
         else
