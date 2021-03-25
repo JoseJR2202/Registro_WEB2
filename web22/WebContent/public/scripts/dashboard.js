@@ -114,5 +114,5 @@ function lectura_archivo(input) {
  
     var fileUpload = document.getElementById('imagen-perfil');
     fileUpload.onchange = function (e) {
-        readFile(e.srcElement);
+        lectura_archivo(e.srcElement);
     }
