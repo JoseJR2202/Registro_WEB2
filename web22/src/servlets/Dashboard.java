@@ -39,6 +39,7 @@ public class Dashboard extends HttpServlet {
 		response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
+
         System.out.println("dasboard "+session.getAttribute("usuario"));
         if(session.getAttribute("usuario")!=null) 
         	out.println(Controlador_dashboard.dash(session));
@@ -61,9 +62,10 @@ public class Dashboard extends HttpServlet {
 		//verificando cual boton lo trajo hacia aqui
 		if(request.getParameter("accion").equals("envio")) {
 			
-			if(session.getAttribute("usuario")!=null&&Controlador.registro(request.getParameter("nombre"),
+			if(session.getAttribute("usuario")!=null&&Controlador.actualizar(request.getParameter("nombre"),
 					request.getParameter("correo") , request.getParameter("nacimiento"),
-					request.getParameter("EDAD"),request.getParameter("Ubicacion"),request.getParameter("pass")))
+					request.getParameter("EDAD"),request.getParameter("Ubicacion"),request.getParameter("pass"),
+					request.getParameter("Descripcion"),request.getParameter("Estudio"),request.getParameter("Hobbie")))
 			{
 				session.setAttribute("pass",request.getParameter("pass") );
 				out.println("{\"status\":\"200\"}");
@@ -71,6 +73,10 @@ public class Dashboard extends HttpServlet {
 				out.println("{\"status\":\"500\"}");
 		}else {
 			session.invalidate();
+			response.setHeader("Pragma", "no-cache");
+			response.setHeader("Cache-Control", "no-store");
+			response.setHeader("Expires", "0");
+			response.setDateHeader("Expires", -1);
 			out.println("{\"status\":\"200\"}");
 		}
 		out.close();	

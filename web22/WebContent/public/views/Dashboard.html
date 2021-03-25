@@ -3,30 +3,54 @@
 <head>
 <meta charset="utf-8">
 <title>Dashboard</title>
+<link href="../styles/home.css" rel="stylesheet">
 </head>
 <body>
+
+	<div id="marco">
+		<div id="imagen">
+		</div>
+	</div>
+
+	<div id="multimedia">
+		<form id="Imagen">
+			<br><br>Escoge una foto de perfil:<input id="imagen-perfil" type="file" />
+			<br>
+			<br>
+			<br>
+		</form>
+	</div>
 	<div id="caja">
 		<form id="Dashboard">
-			<input type="email" id="correo" name="correo" placeholder="correo" minlength="1" maxlength="50" required>
+			Su correo: <input type="email" id="correo" name="correo" placeholder="correo" minlength="1" maxlength="50" required>
 			<br>
-			<input type="text" id="nombre" name="nombre" placeholder="nombre" minlength="1" maxlength="30" required>
+			Su nombre (o alias):<input type="text" id="nombre" name="nombre" placeholder="nombre" minlength="1" maxlength="30" required>
 			<br>
-			<input type="date" id="nacimiento" name="nacimiento" placeholder="nacimiento" required>
+			Su fecha de nacimiento:<input type="date" id="nacimiento" name="nacimiento" placeholder="nacimiento" required>
 			<br>
-			<input type="number" id="EDAD" name="EDAD" placeholder="EDAD"  min="12" max="99" required>
+			Su edad:<input type="number" id="EDAD" name="EDAD" placeholder="EDAD"  min="12" max="99" required>
 			<br>
-			<input type="text" id="Ubicacion" name="Ubicacion" placeholder="Ubicacion" required>
+			Su ubicacion:<input type="text" id="Ubicacion" name="Ubicacion" placeholder="Ubicacion" required>
 			<br>
-			<input type="password" id="pass"  name="pass" placeholder="contraseña" minlength="8" maxlength="16" required>
+			Su contraseña:<input type="password" id="pass"  name="pass" placeholder="contraseña" minlength="8" maxlength="16" required>
+			<br>
+			Breve descripcion:<input type="text" id="Descripcion" name="Descripcion"  required>
+			<br>
+			Estudios:<input type="text" id="Estudio" name="Estudio"  required>
+			<br>
+			Pasatiempos:<input type="text" id="Hobbie" name="Hobbie"  required>
 			<br>
 			<input id="accion" name="accion" type="hidden" value="envio"> 
 			<button id="boton" name="boton" type="submit">enviar</button>
 		</form>
+	</div>
+	<div id="cierre">
 		<form id="cerrar">
 			<input id="accion" name="accion" type="hidden" value="invalidar"> 
 			<button id="boton" name="boton" type="submit">cerrar</button>
 		</form>
 	</div>
+	
 	<script src="../scripts/dashboard.js" type="text/javascript"></script>
 </body>
 </html>

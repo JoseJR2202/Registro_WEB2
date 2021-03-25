@@ -4,6 +4,7 @@
 //boton para enviar cambio al servidor
 var registerForm=document.getElementById("Dashboard");
 var cerrarForm=document.getElementById("cerrar");
+var imagenForm=document.getElementById("Imagen");
 var boton=document.getElementById("boton");
 
 
@@ -54,6 +55,7 @@ const envio2=(e)=>{
 		alert("ocurrio un problema");
 };
 
+
 //Cuando cargue la pagina
 window.onload=()=>{
 
@@ -65,8 +67,9 @@ window.onload=()=>{
 		.then(data=>{
 			if(data.status==200){
 				alert("funciono");
-				const arr=["correo","nombre","nacimiento","EDAD","Ubicacion","pass"];
-				const arr2=[data.correo,data.nombre,data.nacimiento,data.edad,data.ubicacion,data.pass];
+				const arr=["correo","nombre","nacimiento","EDAD","Ubicacion","pass","Descripcion","Estudio","Hobbie"];
+				const arr2=[data.correo,data.nombre,data.nacimiento,data.edad,data.ubicacion,
+					data.pass,data.Descripcion,data.Estudios,data.Hobbie];
 				let i=0;
 				for (const name of arr) {
 					let part =document.getElementById(name);
@@ -82,3 +85,34 @@ window.onload=()=>{
 		})
 		.catch(err=>console.log('Error:',err));
 }
+
+function lectura_archivo(input) {
+        if (input.files && input.files[0]) {
+            var lector = new FileReader();
+ 
+            lector.onload = function (e) {
+                var filePreview = document.createElement('img');
+                
+                filePreview.id = 'file-preview';
+                filePreview.src = e.target.result;
+ 				filePreview.height = 200;
+ 				filePreview.width = 300;
+                
+                var Zona = document.getElementById('imagen');
+                Zona.appendChild(filePreview);
+            }
+            lector.readAsDataURL(input.files[0]);
+
+            var formData = new FormData();
+            formData.append("foto", input.files[0]);
+            formData.append("nombre", input.files[0].name)
+            fetch('https://registroweb2.herokuapp.com/Imagenes', {
+            	method: "POST",
+            	body: formData})
+        }
+    }
+ 
+    var fileUpload = document.getElementById('imagen-perfil');
+    fileUpload.onchange = function (e) {
+        readFile(e.srcElement);
+    }

@@ -21,8 +21,9 @@ public class Controlador_dashboard {
         	if(datos.get(0).equals(session.getAttribute("usuario").toString())==true)
             	return "{\"status\":\"200\",\"correo\":\""+datos.get(0)+"\","
             		+ "\"nombre\":\""+datos.get(1)+"\",\"nacimiento\":\""+datos.get(2)+"\","
-            		+  "\"edad\":\""+datos.get(3)+"\",\"ubicacion\":\""+datos.get(4)+"\","+
-            		"\"pass\":\""+session.getAttribute("pass")+"\"}";
+            		+  "\"edad\":\""+datos.get(3)+"\",\"ubicacion\":\""+datos.get(4)+"\","+"\"pass\":\""+session.getAttribute("pass")+"\","+
+            		"\"Descripcion\":\""+datos.get(6)+"\",\"Estudios\":\""+datos.get(7)+"\","+
+            		"\"Hobbie\":\""+datos.get(8)+"\"}";
             else
             	return "{\"status\":\"500\"}";
         } catch (Exception e) {
