@@ -1,0 +1,97 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Mercado</title>
+  <meta name="description" content="Mercado">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<body>
+
+
+    <header id="header">
+        <div class="container">
+            <nav id=" nav-bar">
+                <ul class="nav-link">
+                    <li><a href="" class="selected">Productos</a></li>
+                    <li><button id="iniciar_sesion"><img src="img/user-male-circle--v1.png"/> Entrar</button ></li>    
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    
+
+    <section class="main-section">
+            <div class="modal-container" id="modal_container">
+                <div class="modal">
+                    <img id ="cerrar" src="https://img.icons8.com/ios-glyphs/25/000000/macos-close.png"/>
+                    <!-- Login -->
+                    <div class="formulario">
+                        <h1>Inicie Sesion</h1>
+                        <form id="inicio_sesion" action="/login" method="POST">
+                            <div class="field-wrap">
+                                <input type="email" id="email" name="email_i" placeholder="correo" minlength="1" maxlength="50" required>
+                            </div>
+                            <div class="field-wrap">
+                                <input type="password" id="password" name="password_i" placeholder="contraseña" minlength="6" maxlength="16" required>
+                            </div>
+                            <button type="submit" id="ingresar">iniciar</button>
+                        </form>
+                    </div>
+                    <br>
+                    <br>
+                    <!-- Registro -->
+                    <div class="formulario">
+                        <h1>Registrar Usuario</h1>
+                        <form id="registro">
+                            <div class="field-wrap">
+                                <input type="email" id="email" name="email" placeholder="correo" minlength="1" maxlength="50" required>
+                            </div>
+                            <div class="field-wrap">
+                                <input type="text" id="username" name="username"  placeholder="nombre" minlength="1" maxlength="30" required>
+                            <div class="field-wrap">
+                                <input type="password" id="password" name="password" placeholder="contraseña" minlength="8" maxlength="16" required>
+                            </div>
+                            <button type="submit" id="enviar">Ingresar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+           <!--  <div class="modal-container_2" id="modal_container_2">
+                <div class="modal_2">
+                    <img id ="cerrar_2" src="https://img.icons8.com/ios-glyphs/25/000000/macos-close.png"/>
+                    <h1>Inicie sesion</h1>
+                    <form id="inicio_sesion" action="/registro" method="post">
+                        <div class="field-wrap">
+                            <input type="email" id="email" name="email" placeholder="Correo Electronico*" required>
+                        </div>
+                            <input type="password" id="password" name="password" placeholder="Contraseña*" required>
+                        </div>
+                        <button type="submit" id="enviar">Ingresar</button>
+                    </form>
+                    <br>
+                    <h3> no tienes una cuenta? <div id="cuenta_no_existe"> Registrate 🠖</div></h3>
+                </div> -->
+            </div>
+
+    </section>
+
+    
+
+    <footer>
+        <div class="rectangulofooter">
+        </div>
+    </footer>
+
+    <script src="./js/scripts.js"></script>
+</body>
+
+</html>
